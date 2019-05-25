@@ -5,11 +5,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Models;
+using MongoDB.SamleData;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace MongoDB.Controllers
 {
+    
     public class HomeController : Controller
     {
+
         public IActionResult Index()
         {
             return View();

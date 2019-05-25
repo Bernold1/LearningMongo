@@ -9,13 +9,18 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.SamleData;
 
 namespace MongoDB
 {
     public class Startup
     {
+        ExampleData data = new ExampleData();
         public Startup(IConfiguration configuration)
         {
+            data.SeedDataToDocuments();
             Configuration = configuration;
         }
 
