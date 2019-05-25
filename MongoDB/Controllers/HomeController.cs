@@ -18,11 +18,21 @@ namespace MongoDB.Controllers
 
         public IActionResult Index()
         {
-
-            using (DataAccess dataAcess = new DataAccess())
+            //using statement is useful for objects whose lifetimes are
+            //within the method or block in which they are created = Smart to use here
+            try
             {
-                var users = dataAcess.GetMongoCollection<User>("User");
+                using (DataAccess dataAcess = new DataAccess())
+                {
+                    var users = dataAcess.GetMongoCollection<User>("User");
+                }
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
             return View();
         }
 
