@@ -8,6 +8,7 @@ using MongoDB.Models;
 using MongoDB.SamleData;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Services;
 
 namespace MongoDB.Controllers
 {
@@ -17,6 +18,11 @@ namespace MongoDB.Controllers
 
         public IActionResult Index()
         {
+
+            using (DataAccess dataAcess = new DataAccess())
+            {
+                var users = dataAcess.GetMongoCollection<User>("User");
+            }
             return View();
         }
 

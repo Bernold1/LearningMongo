@@ -7,7 +7,7 @@ using MongoDB.Models;
 
 namespace MongoDB.Services
 {
-    public class DataAccess
+    public class DataAccess : IDisposable
     {
         private IMongoDatabase database;
         public DataAccess()
@@ -21,5 +21,9 @@ namespace MongoDB.Services
             return database.GetCollection<T>(docName);
         }
 
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
